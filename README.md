@@ -9,6 +9,8 @@ Once the images are downloaded and built, run:
 
 docker-compose up
 
+Finally, open a browser and navigate to http://localhost:3000/swagger/index.html 
+
 For now, the Seed operation is not working, so you need to connect to the PostgreSQL instance in your container and run the SQL code inside the seed.sql file. That creates the blog table and insert some recrods so you can query them from Swagger.
 
 Next step will be adding Azure B2C authentication.
