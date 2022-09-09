@@ -2,3 +2,4 @@
 mydockerapi/.vscode
 mydockerapi/bin
 mydockerapi/obj
+.DS_Store
