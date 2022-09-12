@@ -16,13 +16,13 @@ IConfigurationRoot configuration = new ConfigurationBuilder()
                 .Build();
 
 // Database configuration            
-var postgreConnectionString = configuration.GetConnectionString("PostrgeSqlConnection");
+//var postgreConnectionString = configuration.GetConnectionString("PostrgeSqlConnection");
 //var azureB2CSettings = configuration.GetSection("AzureAdB2C");
 
 // Add services to the container.
-//var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
 builder.Services.AddDbContext<ApiDbContext>(options =>
-    options.UseNpgsql(postgreConnectionString));
+    options.UseNpgsql(connectionString));
 
 // Adds Microsoft Identity platform (Azure AD B2C) support to protect this Api
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -84,7 +84,12 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
-app.MapControllers();
+//app.MapControllers();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.UseSwagger();
 
