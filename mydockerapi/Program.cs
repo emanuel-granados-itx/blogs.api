@@ -29,6 +29,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         .AddMicrosoftIdentityWebApi(options =>
         {
             configuration.Bind("AzureAdB2C", options);
+            //TODO: Review what TokenValidationParameters we want - 09/12/2022 - @egranados
             options.TokenValidationParameters.NameClaimType = "name";
         },
 options => { configuration.Bind("AzureAdB2C", options); });
